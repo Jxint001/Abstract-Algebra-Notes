@@ -2,7 +2,7 @@
 > [!definition] 群的定义
 > 一个非空集合 $G$ 连同一个二元运算 $\cdot: G\times G \to G$ 称为群，如果：
 > 1. $\cdot$ 满足结合律：$\forall \alpha, \beta, \gamma \in G, (\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma)$
-> 2. $G$ 含有幺元 $e$： $\exists e in G, \forall \alpha \in G, \alpha \cdot e = e \cdot \alpha = \alpha$
+> 2. $G$ 含有幺元 $e$： $\exists e \in G, \forall \alpha \in G, \alpha \cdot e = e \cdot \alpha = \alpha$
 > 3. 存在逆元：$\forall \alpha \in G, \exists \beta \in G, \alpha \cdot \beta = \beta \cdot \alpha = e$.
 > 
 > 称 $(G, \cdot)$ 是群。（$\cdot$ 可以记成任何样子，只要性质满足。有 $\cdot$ 也会省略不写。）

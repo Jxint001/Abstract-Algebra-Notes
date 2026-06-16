@@ -1,5 +1,5 @@
 
->[!definition] 子群的定义
+>[!definition] 子群
 >给定一个群 $(G, \cdot)$，如果有集合 $H \subset G$ 且 $(H, \cdot)$ 也是群，则称 $H$ 为 $G$ 的子群，记 $H < G$ 。
 >
 >$H$ 可以就是 $G$ 。
