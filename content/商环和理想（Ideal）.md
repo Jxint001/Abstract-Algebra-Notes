@@ -6,7 +6,11 @@
 
 记 $\alpha + S=\overline{\alpha}$ 。
 
-类似 [[商群和正规子群]] ，自然地定义 $\oplus$ 和 $\bullet$ 如下：$$\overline{\alpha}\oplus\overline{\beta}=\overline{\alpha+\beta},\overline{\alpha}\bullet\overline{\beta}=\overline{\alpha\beta}.$$
+类似 [[商群和正规子群]] ，自然地定义 $\oplus$ 和 $\bullet$ 如下：
+
+$$
+\overline{\alpha}\oplus\overline{\beta}=\overline{\alpha+\beta},\overline{\alpha}\bullet\overline{\beta}=\overline{\alpha\beta}.
+$$
 但是这样的定义不一定总是良定义的。对于何时良定义，我们有下面结论。
 
 >[!lemma]

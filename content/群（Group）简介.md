@@ -28,7 +28,7 @@
 > 显然 $\overline{a+b}\in G$，$+$ 在 $G$ 上封闭。
 > 
 >作出这个定义后，需要保证它是良定义（well-defined)，即
->$a$ $\sim$ $a'$, $b$$\sim$$b'$, 我们希望有 $\overline{a'} + \overline{b'} = \overline{a+b}$.
+>$a$ $\sim$ $a'$, $b$ $\sim$ $b'$, 我们希望有 $\overline{a'} + \overline{b'} = \overline{a+b}$.
 >这容易验证：$n \mid a+b-a'-b'$ $\Rightarrow$ $\overline{a+b} = \overline{a'+b'}$.
 >因此 $+$ 是良定义的。
 >

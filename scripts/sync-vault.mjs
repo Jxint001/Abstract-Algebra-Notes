@@ -44,6 +44,151 @@ function destinationName(sourceName) {
   return sourceName === "Content.md" ? "index.md" : sourceName
 }
 
+function splitBlockquotePrefix(line) {
+  const match = line.match(/^(\s*(?:>\s*)*)(.*)$/)
+  return {
+    prefix: match?.[1] ?? "",
+    content: match?.[2] ?? line,
+  }
+}
+
+function isDisplayMathStart(content, markerIndex) {
+  if (markerIndex < 0) {
+    return false
+  }
+
+  const before = content.slice(0, markerIndex)
+  if (before.trim() === "") {
+    return true
+  }
+
+  const previous = before.at(-1)
+  return Boolean(previous && /[\s:：,，;；.!！?？、([{（]/.test(previous))
+}
+
+function quoteBlank(prefix) {
+  return prefix.includes(">") ? prefix.trimEnd() : ""
+}
+
+function pushDisplayBlock(output, prefix, before, math, after) {
+  const trimmedBefore = before.trimEnd()
+  const trimmedMath = math.trim()
+  const trimmedAfter = after.trimStart()
+
+  if (trimmedBefore) {
+    output.push(prefix + trimmedBefore)
+    output.push(quoteBlank(prefix))
+  }
+
+  output.push(prefix + "$$")
+  if (trimmedMath) {
+    output.push(prefix + trimmedMath)
+  }
+  output.push(prefix + "$$")
+
+  if (trimmedAfter) {
+    output.push(quoteBlank(prefix))
+    output.push(prefix + trimmedAfter)
+  }
+}
+
+function normalizeInlineMathBoundaries(content) {
+  return content.replaceAll("$$", "$ $")
+}
+
+function normalizeDisplayMath(markdown) {
+  const lines = markdown.split(/\r?\n/)
+  const output = []
+  let inFence = false
+  let fenceMarker = ""
+  let inDisplayMath = false
+
+  for (const line of lines) {
+    const { prefix, content } = splitBlockquotePrefix(line)
+    const trimmed = content.trim()
+
+    const fenceMatch = trimmed.match(/^(```+|~~~+)/)
+    if (fenceMatch && !inDisplayMath) {
+      const marker = fenceMatch[1][0]
+      if (!inFence) {
+        inFence = true
+        fenceMarker = marker
+      } else if (marker === fenceMarker) {
+        inFence = false
+        fenceMarker = ""
+      }
+      output.push(line)
+      continue
+    }
+
+    if (inFence) {
+      output.push(line)
+      continue
+    }
+
+    if (trimmed === "$$") {
+      inDisplayMath = !inDisplayMath
+      output.push(line)
+      continue
+    }
+
+    if (inDisplayMath) {
+      const close = content.indexOf("$$")
+      if (close >= 0) {
+        const mathBeforeClose = content.slice(0, close).trimEnd()
+        const afterClose = content.slice(close + 2).trimStart()
+        if (mathBeforeClose) {
+          output.push(prefix + mathBeforeClose)
+        }
+        output.push(prefix + "$$")
+        if (afterClose) {
+          output.push(quoteBlank(prefix))
+          output.push(prefix + afterClose)
+        }
+        inDisplayMath = false
+      } else {
+        output.push(prefix + content)
+      }
+      continue
+    }
+
+    const start = content.indexOf("$$")
+    if (!isDisplayMathStart(content, start)) {
+      output.push(prefix + normalizeInlineMathBoundaries(content))
+      continue
+    }
+
+    const afterStart = content.slice(start + 2)
+    const endInRemainder = afterStart.indexOf("$$")
+
+    if (endInRemainder >= 0) {
+      const end = start + 2 + endInRemainder
+      pushDisplayBlock(
+        output,
+        prefix,
+        content.slice(0, start),
+        content.slice(start + 2, end),
+        content.slice(end + 2),
+      )
+      continue
+    }
+
+    const before = content.slice(0, start)
+    const firstMathLine = content.slice(start + 2).trim()
+    if (before.trimEnd()) {
+      output.push(prefix + before.trimEnd())
+      output.push(quoteBlank(prefix))
+    }
+    output.push(prefix + "$$")
+    if (firstMathLine) {
+      output.push(prefix + firstMathLine)
+    }
+    inDisplayMath = true
+  }
+
+  return output.join("\n")
+}
+
 async function main() {
   await assertReadableDirectory(sourceRoot)
 
@@ -68,7 +213,8 @@ async function main() {
   for (const entry of markdownEntries) {
     const sourcePath = path.join(sourceRoot, entry.name)
     const destPath = path.join(contentDir, destinationName(entry.name))
-    await fs.copyFile(sourcePath, destPath)
+    const markdown = await fs.readFile(sourcePath, "utf8")
+    await fs.writeFile(destPath, normalizeDisplayMath(markdown), "utf8")
   }
 
   console.log(`Copied ${markdownEntries.length} Markdown files from:`)
