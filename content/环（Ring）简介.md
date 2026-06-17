@@ -77,7 +77,7 @@
 >$\mathbb{Z}$ 是整环。$u(\mathbb{Z})=\{ 1,-1 \}$.
 
 >[!example]
->$\mathbb{Z}[i]\triangleq\{ \alpha+\beta i \mid\alpha,\beta \in \mathbb{Z} \}(i=\sqrt{ i })$ 是含幺环。
+>$\mathbb{Z}[i]\triangleq\{ \alpha+\beta i \mid\alpha,\beta \in \mathbb{Z} \}(i=\sqrt{ i })$ 是含幺交换环。
 >$u(\mathbb{Z}[i])=\{ \pm 1, \pm i\}$.
 
 最后给出域的概念。

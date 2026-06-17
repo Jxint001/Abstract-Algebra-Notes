@@ -36,8 +36,18 @@ async function resetContentDirectory(dir) {
   )
 }
 
+function isExplicitlyNonPublic(sourceName) {
+  const compactName = sourceName.toLowerCase().replace(/\s+/g, "")
+  return compactName.includes("不能push") || compactName.includes("donotpush")
+}
+
 function isPublicMarkdown(entry) {
-  return entry.isFile() && !entry.name.startsWith(".") && entry.name.endsWith(".md")
+  return (
+    entry.isFile() &&
+    !entry.name.startsWith(".") &&
+    entry.name.endsWith(".md") &&
+    !isExplicitlyNonPublic(entry.name)
+  )
 }
 
 function destinationName(sourceName) {
@@ -193,6 +203,15 @@ async function main() {
   await assertReadableDirectory(sourceRoot)
 
   const sourceEntries = await fs.readdir(sourceRoot, { withFileTypes: true })
+  const skippedEntries = sourceEntries
+    .filter(
+      (entry) =>
+        entry.isFile() &&
+        !entry.name.startsWith(".") &&
+        entry.name.endsWith(".md") &&
+        isExplicitlyNonPublic(entry.name),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name, "zh-Hans-CN"))
   const markdownEntries = sourceEntries
     .filter(isPublicMarkdown)
     .sort((a, b) => a.name.localeCompare(b.name, "zh-Hans-CN"))
@@ -221,6 +240,12 @@ async function main() {
   console.log(sourceRoot)
   console.log("to:")
   console.log(contentDir)
+  if (skippedEntries.length > 0) {
+    console.log(`Skipped ${skippedEntries.length} explicitly non-public Markdown file(s):`)
+    for (const entry of skippedEntries) {
+      console.log(`- ${entry.name}`)
+    }
+  }
 }
 
 main().catch((error) => {
