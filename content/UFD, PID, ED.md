@@ -45,6 +45,11 @@
 >[!definition] 主理想整环（PID）
 >$R$ 是整环，称 $R$ 是主理想整环（PID），如果 $R$ 中每个理想都是主理想：$\forall I < R$ （$I$ 是理想），$\exists \alpha \in R,I=\langle \alpha \rangle.$
 
+>[!lemma]
+>$R$ 是 PID，$\gcd(a,b)\sim 1 \iff \langle a,b \rangle=R \iff \exists u,v \in R\;s.t.\;au+bv=1.$
+
+这是因为 $\langle a,b \rangle=\langle d \rangle \iff d \mid a, d \mid b, d=as+bt \iff d=\gcd(a,b).$ 而 $\langle d \rangle=R \iff d \sim 1.$
+
 >[!example]
 >$\mathbb{Z}$ 是 PID.
 >
