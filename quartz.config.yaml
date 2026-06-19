@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics: null
   locale: zh-CN
-  baseUrl: Jxint001.github.io/notes
+  baseUrl: Jxint001.github.io/Abstract-Algebra-Notes
   ignorePatterns:
     - private
     - templates

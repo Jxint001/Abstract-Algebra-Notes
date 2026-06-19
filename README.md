@@ -2,16 +2,16 @@
 
 This directory is the Quartz publishing repository for public notes.
 
-It is intended to be deployed as:
+Website:
 
 ```text
-https://<github-username>.github.io/notes/
+https://jxint001.github.io/Abstract-Algebra-Notes/
 ```
 
 The personal homepage should link to:
 
 ```text
-/notes/
+https://jxint001.github.io/Abstract-Algebra-Notes/
 ```
 
 ## Source Vault
@@ -58,14 +58,14 @@ The static output is generated in `public/`.
 
 ## GitHub Pages Deployment
 
-1. Create a GitHub repository named `notes`.
+1. Create a GitHub repository named `Abstract-Algebra-Notes`.
 2. Push this directory to that repository's `v5` branch.
 3. In the repository settings, set GitHub Pages source to GitHub Actions.
 4. Commit the generated `content/` snapshot before pushing, because GitHub Actions cannot access the local Obsidian vault path.
 5. Visit:
 
 ```text
-https://<github-username>.github.io/notes/
+https://jxint001.github.io/Abstract-Algebra-Notes/
 ```
 
-Before publishing under your real account, replace `github-username.github.io/notes` in `quartz.config.yaml` with your actual GitHub Pages base URL, without `https://`.
+Before publishing under a different account or repository name, replace `Jxint001.github.io/Abstract-Algebra-Notes` in `quartz.config.yaml` with the target GitHub Pages base URL, without `https://`.
