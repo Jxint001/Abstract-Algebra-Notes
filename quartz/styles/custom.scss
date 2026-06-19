@@ -1,3 +1,52 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+.callout {
+  --callout-icon-definition: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>');
+  --callout-icon-theorem: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5"></path><path d="M15 8h-5"></path><path d="M19 17V5a2 2 0 0 0-2-2H4"></path><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"></path></svg>');
+  --callout-icon-lemma: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>');
+  --callout-icon-proof: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg>');
+  --callout-icon-comment: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>');
+  --callout-icon-custom-example: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55A1 1 0 0 0 5.614 22h12.772a1 1 0 0 0 .894-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg>');
+}
+
+.callout[data-callout="definition"] {
+  --color: #28b463;
+  --border: #28b46344;
+  --bg: #28b46310;
+  --callout-icon: var(--callout-icon-definition);
+}
+
+.callout[data-callout="theorem"] {
+  --color: #f58c28;
+  --border: #f58c2844;
+  --bg: #f58c2810;
+  --callout-icon: var(--callout-icon-theorem);
+}
+
+.callout[data-callout="lemma"] {
+  --color: #3498db;
+  --border: #3498db44;
+  --bg: #3498db10;
+  --callout-icon: var(--callout-icon-lemma);
+}
+
+.callout[data-callout="proof"] {
+  --color: #787878;
+  --border: #78787844;
+  --bg: #78787810;
+  --callout-icon: var(--callout-icon-proof);
+}
+
+.callout[data-callout="comment"] {
+  --color: #787878;
+  --border: #78787844;
+  --bg: #78787810;
+  --callout-icon: var(--callout-icon-comment);
+}
+
+.callout[data-callout="example"] {
+  --color: #9b59b6;
+  --border: #9b59b644;
+  --bg: #9b59b610;
+  --callout-icon: var(--callout-icon-custom-example);
+}
