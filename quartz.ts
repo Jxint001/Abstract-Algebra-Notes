@@ -3,6 +3,7 @@ import path from "node:path"
 import * as ExternalPlugin from "./.quartz/plugins"
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import ExplorerOpenInNewTab from "./quartz/components/ExplorerOpenInNewTab"
+import DecodedGraph from "./quartz/components/DecodedGraph"
 import { componentRegistry } from "./quartz/components/registry"
 
 type ExplorerNode = {
@@ -188,6 +189,8 @@ function makeExplorerSortFn(order: string[]): ExplorerSortFn {
 ExternalPlugin.Explorer({
   sortFn: makeExplorerSortFn(buildExplorerOrder()),
 })
+componentRegistry.register("graph", DecodedGraph, "local")
+componentRegistry.register("Graph", DecodedGraph, "local")
 componentRegistry.register("ExplorerOpenInNewTab", ExplorerOpenInNewTab, "local")
 
 const config = await loadQuartzConfig()
