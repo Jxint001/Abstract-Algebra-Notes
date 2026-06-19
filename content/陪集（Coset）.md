@@ -25,7 +25,7 @@ $[\alpha]$ 也可以被表示为 $\{\alpha h \mid h \in H\}$，因为 $\forall h
 >[!theorem] $|\alpha H| = |H|$
 
 >[!proof] 证明 $|\alpha H| = |H|$
->定义映射 $f: H \mapsto \alpha H, f(h) = \alpha h$. 
+>定义映射 $f: H \to \alpha H,\; h \mapsto \alpha h$.
 >- $f$ 是单射，因为 $\alpha h_1 = \alpha h_2$ $\Rightarrow$ $h_1 = h_2$ （左乘 $\alpha^{-1}$）.
 >- $f$ 是满射，因为 $\forall x \in \alpha H$, $\exists h$ $s.t.$ $x = \alpha h$. $\blacksquare$.
 

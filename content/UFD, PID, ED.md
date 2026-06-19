@@ -6,7 +6,7 @@
 >[!definition] 唯一分解整环（UFD）
 >$R$ 是整环，若 $\forall \alpha \in R,\alpha \neq 0,\alpha \not\in u(R)$ 都能写成不可约元的乘积 $\alpha=c_{1}c_{2}\cdots c_{n}$ ，并且如果还有另一个不可约分解 $\alpha=d_{1}d_{2}\cdots d_{m}$ 那么 $n=m$ 且存在一个置换 $\sigma: [n]\to[m]$ 使得 $c_{i}\sim d_{\sigma(i)}$ 则称 $R$ 是唯一分解整环，即 UFD.
 >
->这里的唯一性是指唯一到顺序和相伴为止，即允许调换因子顺序，也允许因子乘单位。
+>这里的唯一性是指唯一到顺序和相伴为止，即允许调换因子顺序，也允许因子乘以 unit。
 
 在 [[整环的因式分解语言]] 中已经知道：在整环中，素元 $\Rightarrow$ 不可约元。
 而在 UFD 中，反过来也成立。
@@ -59,9 +59,9 @@
 >因此 $d$ 是 $m,n$ 公因数。
 >假设 $d' \mid m,\;d' \mid n.$
 >$d \in \langle m,n \rangle \implies \exists s,t \in \mathbb{Z}\;s.t.\; d=ms+nt \implies d' \mid d.$
->因此 $d=gcd(m,n).$
+>因此 $d=\gcd(m,n).$
 >
->特别地，如果 $gcd(m,n)=1$ ，那么 $\exists s,t \in \mathbb{Z} \;s.t.\; ms+nt=1.$
+>特别地，如果 $\gcd(m,n)=1$ ，那么 $\exists s,t \in \mathbb{Z} \;s.t.\; ms+nt=1.$
 
 >[!theorem]
 >在整环中，PID $\implies$ UFD.
