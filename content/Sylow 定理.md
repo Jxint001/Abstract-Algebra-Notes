@@ -41,7 +41,7 @@
 >
 >固定一个 Sylow-$p$ 子群 $H$ ，令 $S \triangleq \{ g_{1}H,g_{2}H,\cdots,g_{m}H \}.$（因为 $|H|=p^{n}$ 所以 $|S|=[G:H]=m$.）
 >
->对于 $G$ 在 $S$ 上的左正则作用 $g \cdot(g_{i}H)=gg_{i}H$ ，这个作用只有一个轨道 $orb(g_{i}H)=S,\forall i \in [m].$
+>对于 $G$ 在 $S$ 上的左乘作用 $g \cdot(g_{i}H)=gg_{i}H$ ，这个作用只有一个轨道 $orb(g_{i}H)=S,\forall i \in [m].$
 >由轨道-稳定子定理：$|orb(g_{i}H)|=|S|=[G:Stab(g_{i}H)]=m$.
 >于是 $|Stab(g_{i}H)|=\frac{|G|}{m}=p^{n}.$
 >
@@ -50,7 +50,7 @@
 >
 >$H'$ 是另一个 Sylow-$p$ 子群。把上面的 $G$ 的作用限制到 $H'$ 上，考虑 $H'$ 在 $S$ 上的作用：$h' \cdot (g_{i}H)=h'g_{i}H,\forall h' \in H'.$
 >因为 $|H'|=p^{n}$ ，所以 $|orb_{H'}(g_{i}H)|=|H'| / |Stab_{H'}(g_{i}H)|=p^{n-k}$ ，其中 $p^{k}=|Stab_{H'}(g_{i}H)|$.
->如果所有 $|orb_{H'}(g_{i}H)|$ 都能被 $p$ 整除，那么 $|S| \mid p$.
+>如果所有 $|orb_{H'}(g_{i}H)|$ 都能被 $p$ 整除，那么 $p \mid |S|$.
 >而 $|S|=m,p \nmid m$，因此 $\exists$ 轨道 $C$ $s.t.$ $p \nmid |C|$.
 >结合 $|C| = p$ 的幂，$|C|=1$.
 >即 $\exists g_{i}H$，$h'g_{i}H=g_{i}H,\forall h' \in H'.$
@@ -70,7 +70,7 @@
 
 >[!proof] 1. $r \mid m$
 >固定一个 Sylow-$p$ 子群 $H$ .
->令 $T = \{ \text{所有的 Sylow-} p \text{子群}\}$ 。 $G$ 在 $H$ 上的作用是共轭作用：$g \cdot H=gHg^{-1}.$
+>令 $T = \{ \text{所有的 Sylow-} p \text{子群}\}$ 。 $G$ 在 $T$ 上的作用是共轭作用：$g \cdot H=gHg^{-1}.$
 >由 Sylow 第二定理，所有的 Sylow-$p$ 子群彼此共轭。因此 $orb(H)=T$.
 >$Stab(H)=\{ g \in G \mid gHg^{-1}=H\}=N_{G}(H)$.
 >所以 $r=|T|=[G:N_{G}(H)]$.

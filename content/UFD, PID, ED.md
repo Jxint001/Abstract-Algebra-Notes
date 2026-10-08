@@ -17,8 +17,8 @@
 >[!proof]
 >仅需证明在 UFD 中，$\alpha$ 是不可约元 $\Rightarrow$ $\alpha$ 是素元。
 >已知 $\alpha=\beta\gamma \implies\beta \in u(R) \text{ or } \gamma \in u(R).$
->设 $\alpha \mid \beta\gamma.$
->由于 $\beta \in u(R) \implies\alpha \mid \gamma$ 和 $\gamma \in u(R) \implies \alpha \mid \beta$ ，因此 $\beta,\gamma \in u(R)$ 时结论显然成立。
+>设 $\alpha \mid \beta\gamma$。如果 $\beta=0$ 或 $\gamma=0$，结论显然成立。以下假设 $\beta,\gamma\neq0$。
+>由于 $\beta \in u(R) \implies\alpha \mid \gamma$ 和 $\gamma \in u(R) \implies \alpha \mid \beta$ ，因此 $\beta$ 或 $\gamma$ 是单位时结论显然成立。
 >假设 $\beta,\gamma \not\in u(R).$
 >因为 $R$ 是 UFD，所以可以分解 $\beta,\gamma$
 >- $\beta=p_{1}p_{2}\cdots p_{r}.$
@@ -34,7 +34,7 @@
 >
 >如果 $\delta \not\in u(R)$ ，则 $\delta$ 可以被分解为 $d_{1}d_{2}\cdots d_{l}.$
 >于是 $p_{1}\cdots p_{r}q_{1}\cdots q_{s}=\alpha d_{1}d_{2}\cdots d_{l}.$
->类似上面，我们可以得到 $\alpha=p_{i} \text{ or } q_j$.
+>类似上面，我们可以得到 $\alpha\sim p_{i}$ 或 $\alpha\sim q_j$.
 >用类似的方法可以得出 $\alpha$ 是素元。 $\blacksquare.$
 
 >[!example]
@@ -53,15 +53,16 @@
 >[!example]
 >$\mathbb{Z}$ 是 PID.
 >
->主理想 $\langle m \rangle=m\mathbb{Z},m\geq 0.$
->只需要证明 $\forall m,n\geq 0,\;\exists d \in \mathbb{Z}\;s.t.\;\langle m,n \rangle=\langle d \rangle.$
->$m \in \langle d \rangle \implies d \mid m$，同理 $d \mid n.$
->因此 $d$ 是 $m,n$ 公因数。
->假设 $d' \mid m,\;d' \mid n.$
->$d \in \langle m,n \rangle \implies \exists s,t \in \mathbb{Z}\;s.t.\; d=ms+nt \implies d' \mid d.$
->因此 $d=\gcd(m,n).$
+>任取理想 $I\subseteq\mathbb{Z}$。如果 $I=\{0\}$，则 $I=\langle0\rangle$。
+>如果 $I\neq\{0\}$，因为理想对取负封闭，所以 $I$ 含有正整数。取其中最小的正整数 $d$。
+>由 $d\in I$ 得到 $d\mathbb{Z}\subseteq I$。
+>对任意 $a\in I$，带余除法给出 $a=qd+r$，其中 $q\in\mathbb{Z}$，$0\leq r<d$。
+>因为 $r=a-qd\in I$，由 $d$ 的最小性可知 $r=0$，所以 $a\in d\mathbb{Z}$。
+>因此 $I=d\mathbb{Z}=\langle d\rangle$。每个理想都是主理想，故 $\mathbb{Z}$ 是 PID。
 >
->特别地，如果 $\gcd(m,n)=1$ ，那么 $\exists s,t \in \mathbb{Z} \;s.t.\; ms+nt=1.$
+>特别地，对不全为零的非负整数 $m,n$，写 $\langle m,n\rangle=\langle d\rangle$，其中 $d>0$。
+>由 $m,n\in\langle d\rangle$ 可知 $d\mid m$ 且 $d\mid n$；又有 $d=ms+nt$，其中 $s,t\in\mathbb{Z}$，所以任意公因数都整除 $d$。因此 $d=\gcd(m,n)$。
+>如果 $\gcd(m,n)=1$，则存在 $s,t\in\mathbb{Z}$ 使得 $ms+nt=1$。
 
 >[!theorem]
 >在整环中，PID $\implies$ UFD.
@@ -80,7 +81,7 @@
 >于是 $\langle \alpha \rangle \subsetneq \langle \beta \rangle.$
 >对 $\beta$ 继续分解，$\beta=\beta_{1}\gamma_{1},\;\gamma_{1}\not\in u(R),\beta_{1}$ 不能被分解成不可约元乘积。
 >依此类推，可以得到无限的严格的上升链：$\langle \alpha \rangle \subsetneq \langle \beta \rangle \subsetneq \langle \beta_{1} \rangle\subsetneq \cdots$
->若 $I_{1} \subset I_{2} \subset \cdots$ ，令 $I=\bigcup_{n\geq_{1}}I_{n}$ ，容易验证 $I$ 是理想。
+>若 $I_{1} \subset I_{2} \subset \cdots$ ，令 $I=\bigcup_{n\geq 1}I_{n}$ ，容易验证 $I$ 是理想。
 >因为 $R$ 是 PID ，所以 $I=\langle d \rangle.$
 >$d \in I \implies d \in I_{N} \implies I=\langle d \rangle \subset I_{N}\subset I.$
 >因此 $I_{N}=I.$
@@ -104,7 +105,7 @@
 >$p_{i},q_{j}$ 都是不可约元，因此都是素元。
 >$p_{1} \mid q_{1}\cdots q_{m} \implies p_{1}\mid q_{j} \implies p_{1} \sim q_{j}.$
 >可以调换 $q_{j}$ 和 $q_{1}$ ，得到 $q_{1}=up_{1},u \in u(R).$
->于是 $p_{1}p_{2}\cdots p_{n}=uq_{1}q_{2}\cdots q_{m}.$
+>于是 $p_{1}p_{2}\cdots p_{n}=up_{1}q_{2}\cdots q_{m}.$
 >消去 $p_{1}$ 得到 $p_{2}\cdots p_{n}=uq_{2}\cdots q_{m}.$
 >继续对剩下的因子重复这个过程。
 >最后会得到 $m=n$ （否则就有 $1 \sim q_{j}$ 或者 $1 \sim p_{i}$，这是不可能的。）

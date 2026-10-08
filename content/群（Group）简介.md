@@ -39,7 +39,7 @@
 >3. $\overline{a}$ 的逆元：$\overline{n-a}$.
 
 >[!example] 模 $n$ 的可逆剩余类群
->$G = \mathbb{Z}_n^* = \{\overline{\alpha} \in \mathbb{Z}_n \mid (\alpha, n) = 1\}$. 定义二元运算 $\cdot$ ：$\forall \overline{a}, \overline{b} \in \mathbb{Z}_n^*, \overline{a} + \overline{b} \triangleq \overline{a \cdot b}$.
+>$G = \mathbb{Z}_n^* = \{\overline{\alpha} \in \mathbb{Z}_n \mid (\alpha, n) = 1\}$. 定义二元运算 $\cdot$ ：$\forall \overline{a}, \overline{b} \in \mathbb{Z}_n^*, \overline{a} \cdot \overline{b} \triangleq \overline{a \cdot b}$.
 >
 >如果 $\overline{a}, \overline{b} \in G$, 那么 $\overline{a \cdot b} \in G$，因为 $a \cdot b$ 与 $n$ 仍然互质。因此 $\cdot$ 在 $G$ 上封闭。
 >接着用类似上一个例子的方法，不难得出 $\cdot$ 是良定义的。
@@ -51,12 +51,16 @@
 
 *（为了方便，在后续的讨论中我们会省略部分关于良定义的说明，但是这件事是很重要的。）*
 
-实际上，要证明 $(G, \cdot)$ 是群，除了用证明运算的封闭性和满足定义之外，还可以用如下**等价**的方法：
+如果 $G$ 是某个已知群 $K$ 的非空子集，并沿用 $K$ 的运算，就可以用下面的**子群判别法**证明 $G$ 本身是群：
 
->[!theorem] 对于 $(G, \cdot)$，如果 $\forall\alpha, \beta\in G$，且$\cdot$ 满足结合律，$\alpha\beta^{-1}\in G$，那么 $(G, \cdot)$ 是群。
+>[!theorem] 子群判别法
+>设 $K$ 是群，$\varnothing\neq G\subseteq K$。则 $G$ 是 $K$ 的子群，当且仅当 $\forall\alpha,\beta\in G$，都有 $\alpha\beta^{-1}\in G$。这里的乘法和逆元都取自 $K$。
 
-简述其证明：
-1. 由条件，结合律满足；
-2. 由条件，逆元存在；
-3. $\alpha \cdot \alpha^{-1} = e$，幺元存在；
-4. 由于逆元存在且 $\alpha \beta^{-1}\in G$，运算封闭。
+>[!proof]
+>必要性：如果 $G$ 是子群，则对逆元和乘法封闭，所以 $\alpha\beta^{-1}\in G$。
+>
+>充分性：假设条件成立。
+>1. 因为 $G$ 非空，可以取 $a\in G$，于是 $e=aa^{-1}\in G$。
+>2. 对任意 $a\in G$，由 $e,a\in G$ 得到 $a^{-1}=ea^{-1}\in G$。
+>3. 对任意 $a,b\in G$，已有 $b^{-1}\in G$，所以 $ab=a(b^{-1})^{-1}\in G$。
+>4. 结合律由 $K$ 的运算继承。因此 $G$ 是 $K$ 的子群。$\blacksquare.$
